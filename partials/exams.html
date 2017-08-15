@@ -1,0 +1,50 @@
+<h4 class="blog-post-title">{{exam_title}}</h4>
+<hr/>
+
+<div class="chat-panel panel panel-primary ">
+                        <div class="panel-heading">
+                            <i class="fa fa-th-list fa-fw"></i>
+                            Exams
+                            <div class="sw-search" >
+            <div class="nav-search" id="nav-search">
+                   <span class="input-icon">
+                        <input placeholder="Search Exams" class="nav-search-input" ng-model="filterQuestion" ng-change="resetLimit();"  autocomplete="off" type="text" style="width:300px;" focus>
+                        <i class="search-icon fa fa-search nav-search-icon"></i>
+                    </span>
+            </div>
+        </div>
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <ul class="chat">
+							<li ng-show="exams.length==0"><i class="fa fa-ban fa-3x"></i>&nbsp;No data found</li>
+							<li ng-hide="exams.length>-1"><i class="fa fa-cog fa-3x fa-spin"></i>&nbsp;Loading</li>
+                                <li class="left clearfix" ng-repeat="c in exams | filter:filterQuestion | orderBy:'-exam_id'" id="{{c.exam_id}}" animate-on-change='c.exams' ng-animate=" 'animate'">
+                                    <span class="chat-img pull-left">
+                                        <img src="images/sound-16-512.png" width="50" height="50" alt="User Avatar" class="img-circle">
+                                    </span>
+                                    <div class="chat-body clearfix">
+                                        <div class="header">
+                                            <strong class="primary-font">{{c.exam_name}}</strong>
+                                            <small class="pull-right text-muted">
+                                                 <a role="button" ng-really-message="Do you want to attempt this Exam?" ng-really-click="takeExam(c);" class="btn" ng-class="{1:'btn-success', 0:'btn-outline btn-primary'}[c.status]"  >{{c.status == 0 ? "Take Exam" : "Completed"}}</a>
+												 
+                                            </small>
+                                        </div>
+                                        <p>
+                                           {{c.description}}
+                                        </p>
+                                    </div>
+                                </li>
+                                
+                            </ul>
+                        </div>
+                        <!-- /.panel-body -->
+                        <div class="panel-footer">
+                           
+                        </div>
+                        <!-- /.panel-footer -->
+                    </div>
+
+              
+        

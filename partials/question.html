@@ -1,0 +1,34 @@
+    <button type="button" class="close" ng-click="cancel();">
+        <i class="fa fa-times-circle-o" style="margin:10px;color:blue;"></i>
+    </button>
+    <div class="modal-header">
+        <h3 class="modal-title">Question Details</h3>
+    </div>
+    <div class="modal-body">
+        <form name="question_form" class="form-horizontal" role="form" novalidate>
+            {{question.question}} 
+			 <ul>
+    <li ng-repeat="x in options">
+	  <label>
+                <input type="radio"  name="ques_options" ng-model="$parent.answered" value="{{ x.option_id }}" required />&nbsp; {{ x.option_content }} 
+            </label>
+    </li>
+  </ul>
+ 
+            <div class="space"></div>
+            <div class="space-4"></div>
+            <div class="modal-footer">
+                <form-element label="">
+                    <div class="text-right">
+                        <a class="btn btn-sm" ng-click="cancel()"><i class="ace-icon fa fa-reply"></i>Cancel</a>
+                        <button ng-click="saveAnswer();"
+                                class="btn btn-sm btn-primary"
+                                type="submit">
+                            <i class="ace-icon fa fa-check"></i>{{buttonText}}
+                        </button>
+                    </div>
+                </form-element>
+            </div>
+        </form>
+    </div>
+

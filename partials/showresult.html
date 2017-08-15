@@ -1,0 +1,60 @@
+<h4 class="blog-post-title">{{exam_title}}</h4>
+<hr/>
+
+<div class="panel panel-success">
+	<div class="panel-heading">
+		<i class="fa fa-bell fa-fw"></i> Exam Result
+	</div>
+	<!-- /.panel-heading -->
+	<div class="panel-body">
+	   <div ng-show="showviewresult" >
+		You have Scored : {{score}}
+		</br>
+		Total Marks : {{maxscore}}
+		</div>
+		<div ng-hide="showviewresult" class="alert alert-warning">
+          {{message}}
+     </div>
+	</div>
+<!-- /.panel-body -->
+</div>
+<div ng-show="showviewresult" class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-th-list fa-fw"></i> View Answers
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div  class="panel-body">
+                            <ul class="timeline">
+                                
+                                <li class="timeline-inverted" ng-repeat="(ques_id, ques) in questions">
+                                    <div class="timeline-badge" ng-class="{true:'success', false:'danger' }[ques.correct ==  ques.given]" >
+									<i class="fa " ng-class="{true:'fa-check', false:'fa-times' }[ques.correct ==  ques.given]"></i>
+                                    </div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <h4 class="timeline-title">{{ques.question}}</h4>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <ul>
+											<li ng-repeat="(opid, opval) in ques.options">
+											  <label><div  ng-if="ques.given == opid && ques.correct !=  opid" class="badge dangeer">
+											<i class="fa fa-times"></i>
+											</div>
+											<div ng-if="ques.correct ==  opid" class="badge success">
+											<i class="fa fa-check"></i>
+											</div>
+
+											&nbsp; {{ opval }} 
+											
+											</label>
+											</li>
+											</ul>
+                                        </div>
+                                    </div>
+                                </li>
+                                
+                            </ul>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    
